@@ -1,21 +1,26 @@
 
-n = int(input("Enter a decimal number: "))
-if n == 0:
-    binary = "0"
-else:
-    binary = ""
-    power = 0
-    
-    while 2 ** power <= n:
-        power += 1
-    
-    for i in range(power - 1, -1, -1):
-        if n >= 2 ** i:
-            binary += "1"
-            n -= 2 ** i
-        else:
-            binary += "0"
-    
-print(f"The binary representation of {n} is {binary}")
+decimals = input("Enter decimal numbers separated by spaces: ")
+decimal_numbers = [int(num) for num in decimals.split()]
+
+
+for decimal_number in decimal_numbers:
+    binary_digits = []
+    num = decimal_number
+
+    while num > 0:
+        remainder = num % 2
+        binary_digits.insert(0, remainder)
+        num = num // 2
+
+    if not binary_digits:
+        binary_digits.append(0)
+
+
+    binary_string = ''
+    for digit in binary_digits:
+        binary_string += str(digit)
+
+
+    print(f"The binary representation of {decimal_number} is {binary_string}")
 
 
